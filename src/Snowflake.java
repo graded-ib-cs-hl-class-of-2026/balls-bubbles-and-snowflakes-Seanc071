@@ -72,6 +72,7 @@ public void move() {
 
 
     public void draw() {
+        s.stroke(borderColor);
         s.line(x+radius,y,x-radius,y);
         s.line(x,y+radius,x,y-radius);
         s.line(x+radius*.707f,y+radius*.707f,x-radius*.707f,y-radius*.707f);

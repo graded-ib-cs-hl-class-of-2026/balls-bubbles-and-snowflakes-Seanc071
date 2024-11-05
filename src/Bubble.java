@@ -15,6 +15,7 @@ class Bubble {
     private int fillColor;
     /** The color of the outside of the ball */
     private int borderColor;
+    private boolean isDragging = false;
 
 /**constructor */
     public Bubble(Sketch sketch) {
@@ -27,7 +28,7 @@ class Bubble {
         fillColor = s.color(255, 100, 100);
         borderColor = s.color(0, 0, 0);
 
-    }
+    }                               
     public Bubble(Sketch sketch, float radius, float x, float y, float xspeed, float yspeed) {
         this.s = sketch;
         this.radius = radius;
@@ -66,6 +67,7 @@ class Bubble {
 
 
     public void move() {
+        if(!isDragging){
         x = x + xSpeed;
         y = y + ySpeed;
         if (x > s.width - radius) {
@@ -77,7 +79,37 @@ class Bubble {
         } else if (y < radius) {
             y = s.height - radius;
         }
+    }}
+    /**https://processing.org/reference/mousePressed_.html */
+    //used the similar method with the collision 
+    /** When mouse is pressed */
+    public void mousePressed(float mouseX, float mouseY){
+        /**calculates the distance between the mouse's current possision 
+         * and the center of the bubble object
+         */
+        float distance = s.dist(mouseX, mouseY, x, y);
+        /** if the distance of the mouse is less then the radius
+         * the mouse dragging bubble is true
+         */
+        if(distance < radius){
+            isDragging = true;
+        }
+        }
+/**https://processing.org/reference/mouseDragged_.html */
+    public void mouseDragged(float mouseX, float mouseY){
+        if(isDragging){
+            /** position changes as the mouse moves */
+            x = mouseX;
+            y = mouseY;
+        }
+
+
+    }
+/**https://processing.org/reference/mouseReleased_.html */
+    public void mouseReleased(){
+        /**If mouse is released, dragging is false */
+        isDragging = false;
+    }
     }
 
-}
  
