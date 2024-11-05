@@ -157,7 +157,7 @@ class Ball {
         /**this.x and this.y are the coordinates of the current Ball, while other.x
          * and other.y are the coordinates of the other Ball
          */
-        float distance = s.dist(this.x, this.y, other.x, other.y);
+     float distance = s.dist(this.x, this.y, other.x, other.y);
         /** This checks if the distance between the cneters of the two balls is less than
          * the sum of their radii
          */

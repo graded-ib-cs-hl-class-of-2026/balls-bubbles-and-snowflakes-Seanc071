@@ -154,7 +154,9 @@ public class Sketch extends PApplet {
     /**When key is pressed, color changes permenantly */
     /**learned from https://processing.org/reference/keyPressed_.html */
   public void keyPressed(){
-    /**if key a,b,c,d is pressed, color changes(graivty mode still off)(blue, purble, white, black) */
+    /**if key a,b,c,d is pressed, color changes(graivty mode still off)(blue, purble, white, black)
+     * but color changes back when they collide
+     */
     if(key == 'a'){        
     ball1.setColors(color(0,0,255),color(0));
     gravityMode = false;
